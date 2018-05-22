@@ -1,8 +1,7 @@
 
-from pyalgotrade import broker
-from pyalgotrade.broker import backtesting
-
-import common
+from mooquant_mercadobitcoin import common
+from mooquant import broker
+from mooquant.broker import backtesting
 
 
 class BacktestingBroker(backtesting.Broker):
@@ -13,7 +12,7 @@ class BacktestingBroker(backtesting.Broker):
     :param cash: The initial amount of cash.
     :type cash: int/float.
     :param barFeed: The bar feed that will provide the bars.
-    :type barFeed: :class:`pyalgotrade.barfeed.BarFeed`
+    :type barFeed: :class:`mooquant.barfeed.BarFeed`
     :param fee: The fee percentage for each order. Defaults to 0.25%.
     :type fee: float.
 
@@ -81,7 +80,7 @@ class PaperTradingBroker(BacktestingBroker):
     :param cash: The initial amount of cash.
     :type cash: int/float.
     :param barFeed: The bar feed that will provide the bars.
-    :type barFeed: :class:`pyalgotrade.barfeed.BarFeed`
+    :type barFeed: :class:`mooquant.barfeed.BarFeed`
     :param fee: The fee percentage for each order. Defaults to 0.5%.
     :type fee: float.
 

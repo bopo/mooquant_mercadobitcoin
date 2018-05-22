@@ -1,9 +1,6 @@
-from pyalgotrade import strategy
-from pyalgotrade.technical import cross
-from pyalgotrade.technical import ma
-
-import broker
-import livefeed
+from mooquant import strategy
+from mooquant.technical import cross, ma
+from mooquant_mercadobitcoin import broker, livefeed
 
 
 class Strategy(strategy.BaseStrategy):

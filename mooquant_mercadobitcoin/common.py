@@ -1,10 +1,9 @@
 
-import pyalgotrade.logger
-from pyalgotrade import broker
-
+import mooquant.logger
+from mooquant import broker
 
 btc_symbol = "btcbrl"
-logger = pyalgotrade.logger.getLogger("mercadobitcoin")
+logger = mooquant.logger.getLogger("mercadobitcoin")
 
 
 class BTCTraits(broker.InstrumentTraits):

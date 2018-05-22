@@ -1,6 +1,6 @@
 
-import urllib2
 import json
+import urllib.request, urllib.error, urllib.parse
 
 
 class MercadobitcoinError(Exception):
@@ -9,7 +9,7 @@ class MercadobitcoinError(Exception):
 
 
 def json_http_request(url):
-    f = urllib2.urlopen(url)
+    f = urllib.request.urlopen(url)
     response = f.read()
     return json.loads(response)
 

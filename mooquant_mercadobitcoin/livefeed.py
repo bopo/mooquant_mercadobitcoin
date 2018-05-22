@@ -1,19 +1,14 @@
 # -*- coding: utf-8 -*-
 
 
-import Queue
 import datetime
+import queue
 import threading
 import time
 
-from pyalgotrade import bar
-from pyalgotrade import barfeed
-from pyalgotrade import dataseries
-from pyalgotrade import logger
-from pyalgotrade import observer
-from pyalgotrade.utils import dt
-
-import api
+from mooquant_mercadobitcoin import api
+from mooquant import bar, barfeed, dataseries, logger, observer
+from mooquant.utils import dt
 
 logger = logger.getLogger("mercadobitcoin")
 
@@ -128,7 +123,7 @@ class PollingThread(threading.Thread):
             if not self.__stopped:
                 try:
                     self.doCall()
-                except Exception, e:
+                except Exception as e:
                     logger.critical("Unhandled exception", exc_info=e)
         logger.debug("Thread finished.")
 
@@ -192,7 +187,7 @@ class TradesAPIThread(PollingThread):
                             'ask': float(best_ask[0])
                         }
                     ))
-            except api.MercadobitcoinError, e:
+            except api.MercadobitcoinError as e:
                 logger.error(e)
 
 
@@ -211,7 +206,7 @@ class LiveFeed(barfeed.BaseBarFeed):
         if not isinstance(identifiers, list):
             raise Exception("identifiers must be a list")
 
-        self.__queue = Queue.Queue()
+        self.__queue = queue.Queue()
         self.__orderBookUpdateEvent = observer.Event()
         self.__thread = TradesAPIThread(
             self.__queue,
@@ -277,7 +272,7 @@ class LiveFeed(barfeed.BaseBarFeed):
                         eventType, eventData
                     )
                 )
-        except Queue.Empty:
+        except queue.Empty:
             pass
         return ret
 
