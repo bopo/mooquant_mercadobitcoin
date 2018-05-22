@@ -1,4 +1,4 @@
-# [Mercado Bitcoin](https://www.mercadobitcoin.com.br/) [PyAlgoTrade](http://gbeced.github.io/pyalgotrade/) Module
+# [Mercado Bitcoin](https://www.mercadobitcoin.com.br/) [MooQuant](http://gbeced.github.io/pyalgotrade/) Module
 
 Esta é uma versão inicial para monitoramento e sugestões de compra/venda de bitcoins no Mercado Bitcoin. **Execução de ordens ainda não implementadas.** Até o momento somente está implementado cotações em tempo real (extends ```barfeed.BaseBarFeed```). As cotações são consultadas através da API do Mercado Bitcon de trades e bookorders. No futuro esperamos implementar o broker de compra e venda de bitcoins.
 
