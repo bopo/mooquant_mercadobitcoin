@@ -6,9 +6,9 @@ import queue
 import threading
 import time
 
-from mooquant_mercadobitcoin import api
 from mooquant import bar, barfeed, dataseries, logger, observer
 from mooquant.utils import dt
+from mooquant_mercadobitcoin import api
 
 logger = logger.getLogger("mercadobitcoin")
 
@@ -157,7 +157,7 @@ class TradesAPIThread(PollingThread):
     def doCall(self):
         for identifier in self.__identifiers:
             try:
-                trades = api.get_trades() #identifier
+                trades = api.get_trades()  # identifier
                 trades.reverse()
                 for barDict in trades:
                     bar = {}
@@ -175,8 +175,8 @@ class TradesAPIThread(PollingThread):
                     best_bid = orders['bids'][0]
                     #last_update = self.last_orderbook_ts + 1;
 
-                       # max(
-                       # best_ask['timestamp'], best_bid['timestamp']
+                    # max(
+                    # best_ask['timestamp'], best_bid['timestamp']
                     #)
                     # if last_update > self.last_orderbook_ts:
                     #     self.last_orderbook_ts = last_update

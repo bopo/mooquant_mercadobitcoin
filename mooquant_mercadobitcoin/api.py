@@ -1,6 +1,4 @@
-
-import json
-import urllib.request, urllib.error, urllib.parse
+import requests
 
 
 class MercadobitcoinError(Exception):
@@ -9,27 +7,29 @@ class MercadobitcoinError(Exception):
 
 
 def json_http_request(url):
-    f = urllib.request.urlopen(url)
-    response = f.read()
-    return json.loads(response)
-
+    response = requests.get(url)
+    return response.json()
 
 
 def get_trades():
-    url = "https://www.mercadobitcoin.net/api/trades/" #.format(currency_pair)
-    #try:
-    ret = json_http_request(url)
-    #except:
-    #    raise MercadobitcoinError('Problem fetching trades')
+    # .format(currency_pair)
+    url = "https://www.mercadobitcoin.net/api/trades/"
 
-    #print(ret)
+    try:
+        ret = json_http_request(url)
+    except BaseException:
+        raise MercadobitcoinError('Problem fetching trades')
+
     return ret
 
 
 def get_orderbook(currency_pair):
-    url = "https://www.mercadobitcoin.net/api/orderbook/" #.format(currency_pair)
-   # try:
-    ret = json_http_request(url)
-   # except:
-   #     raise MercadobitcoinError('Problem fetching trades')
+    # .format(currency_pair)
+    url = "https://www.mercadobitcoin.net/api/orderbook/"
+
+    try:
+        ret = json_http_request(url)
+    except BaseException:
+        raise MercadobitcoinError('Problem fetching trades')
+
     return ret
